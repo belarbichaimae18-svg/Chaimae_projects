@@ -480,7 +480,7 @@ model_bytes = io.BytesIO()
 try:
     pickle.dump(best_model, model_bytes)
     model_bytes.seek(0)
-    st.download_button(label="⬇️ Télécharger le modèle optimal (pickle)",
+    st.download_button(label=" Télécharger le modèle optimal (pickle)",
                        data=model_bytes,
                        file_name=f"best_model_{best_model_name}.pkl")
 except Exception as e:
@@ -490,7 +490,7 @@ except Exception as e:
 # PDF GENERATION
 # ---------------------------
 st.write("Générer un rapport PDF complet :")
-generate_pdf = st.button("🖨️ Générer le PDF")
+generate_pdf = st.button(" Générer le PDF")
 
 def build_pdf(saved_figs, results_df, optimal_values, predicted_nox_min):
     bio = io.BytesIO()
@@ -561,7 +561,7 @@ def build_pdf(saved_figs, results_df, optimal_values, predicted_nox_min):
 if generate_pdf:
     try:
         pdf_bytes = build_pdf(saved_figs, results_df, optimal_values, predicted_nox_min)
-        st.download_button("⬇️ Télécharger le rapport PDF", data=pdf_bytes, file_name="nox_report.pdf", mime="application/pdf")
+        st.download_button(" Télécharger le rapport PDF", data=pdf_bytes, file_name="nox_report.pdf", mime="application/pdf")
     except Exception as e:
         st.error("Erreur PDF :", e)
 
